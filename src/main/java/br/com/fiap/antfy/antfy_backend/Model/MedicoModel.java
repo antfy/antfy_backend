@@ -1,22 +1,21 @@
 package br.com.fiap.antfy.antfy_backend.Model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 @Data
 @Entity
-@Table(name = "Paciente")
-public class PacienteModel {
+@Table(name = "Medico")
+public class MedicoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "in_paciente")
-    private Integer inPaciente;
+    private Integer inMedico;
 
     @Column(name = "nome")
     private String nome;
@@ -27,9 +26,14 @@ public class PacienteModel {
     @Column(name = "senha")
     private String senha;
 
-    @Column(name = "cpf")
-    private String cpf;
+    @Column(name = "crm")
+    private String crm;
 
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "especialidade")
+    private EspecialidadeModel especialidade;
+
+    @OneToOne(mappedBy = "medico", cascade = CascadeType.ALL)
     private EnderecoModel endereco;
 }
+

@@ -1,13 +1,13 @@
 package br.com.fiap.antfy.antfy_backend.Model;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 @Data
 @Entity
 @Table(name = "Enderecos")
@@ -15,7 +15,8 @@ public class EnderecoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_endereco;
+    @Column(name = "id_endereco")
+    private Integer idEndereco;
 
     @Column(name = "lagradouro")
     private String lagradouro;
@@ -41,6 +42,11 @@ public class EnderecoModel {
     @Column(name = "numero")
     private Integer numero;
 
+    @JsonIgnore
     @OneToOne
     private PacienteModel paciente;
+
+    @JsonIgnore
+    @OneToOne
+    private MedicoModel medico;
 }
