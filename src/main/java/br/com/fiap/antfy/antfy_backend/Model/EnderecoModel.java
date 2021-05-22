@@ -3,19 +3,22 @@ package br.com.fiap.antfy.antfy_backend.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Builder
+@NoArgsConstructor
 @Data
 @Entity
-@Table(name = "Enderecos")
-public class EnderecoModel {
+@Table(name = "tb_04_enderecos")
+public class EnderecoModel implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_endereco")
+    @Column(name = "id_enderecos")
     private Integer idEndereco;
 
     @Column(name = "lagradouro")
@@ -43,10 +46,21 @@ public class EnderecoModel {
     private Integer numero;
 
     @JsonIgnore
-    @OneToOne
+    @OneToOne(mappedBy = "endereco")
     private PacienteModel paciente;
 
     @JsonIgnore
-    @OneToOne
+    @OneToOne(mappedBy = "endereco")
     private MedicoModel medico;
+
+    public EnderecoModel(String lagradouro, String bairro, String cidade, String estado, String pais, String complemento, Integer cep, Integer numero) {
+        this.lagradouro = lagradouro;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+        this.complemento = complemento;
+        this.cep = cep;
+        this.numero = numero;
+    }
 }
