@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class PacienteModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_paciente")
-    private Integer inPaciente;
+    private Integer idPaciente;
 
     @Column(name = "nome")
     private String nome;
@@ -36,4 +37,16 @@ public class PacienteModel implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco")
     private EnderecoModel endereco;
+
+
+    @OneToMany(mappedBy = "paciente")
+    private List<AcompanhamentoModel> acompanhamento;
+
+    public PacienteModel(String nome, String email, String senha, String cpf, EnderecoModel endereco) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.cpf = cpf;
+        this.endereco = endereco;
+    }
 }

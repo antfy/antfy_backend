@@ -1,18 +1,13 @@
 package br.com.fiap.antfy.antfy_backend.Controller;
 
-import br.com.fiap.antfy.antfy_backend.Model.DTO.CadastraMedicoDTO;
 import br.com.fiap.antfy.antfy_backend.Model.EspecialidadeModel;
-import br.com.fiap.antfy.antfy_backend.Model.MedicoModel;
-import br.com.fiap.antfy.antfy_backend.Repository.EspecialidadeRepository;
-import br.com.fiap.antfy.antfy_backend.services.MedicoService;
-import br.com.fiap.antfy.antfy_backend.services.ServiceEspecialidade;
+import br.com.fiap.antfy.antfy_backend.services.EspecialidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,7 +15,7 @@ import java.util.List;
 public class EspecialidadeController {
 
         @Autowired
-        ServiceEspecialidade service;
+        EspecialidadeService service;
 
 
     @GetMapping

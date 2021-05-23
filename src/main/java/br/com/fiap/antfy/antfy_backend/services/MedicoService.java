@@ -1,8 +1,7 @@
 package br.com.fiap.antfy.antfy_backend.services;
 
-import br.com.fiap.antfy.antfy_backend.Model.DTO.CadastraMedicoDTO;
+import br.com.fiap.antfy.antfy_backend.Model.DTO.CadastraUsuarioDTO;
 import br.com.fiap.antfy.antfy_backend.Model.EnderecoModel;
-import br.com.fiap.antfy.antfy_backend.Model.EspecialidadeModel;
 import br.com.fiap.antfy.antfy_backend.Model.MedicoModel;
 import br.com.fiap.antfy.antfy_backend.Repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +16,14 @@ public class MedicoService {
     MedicoRepository repository;
 
     @Autowired
-    ServiceEspecialidade serviceEspecialidade;
+    EspecialidadeService serviceEspecialidade;
 
     public List<MedicoModel> buscarTodos() {
         List<MedicoModel> medico = repository.findAll();
         return medico;
     }
 
-    public MedicoModel cadastrarMedico(CadastraMedicoDTO obj) {
+    public MedicoModel cadastrarMedico(CadastraUsuarioDTO obj) {
 
         MedicoModel medico = new MedicoModel(obj.getNome(),
                 obj.getEmail(), obj.getSenha(), obj.getCrm(),

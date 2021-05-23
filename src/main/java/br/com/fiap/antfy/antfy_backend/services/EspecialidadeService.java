@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service
-public class ServiceEspecialidade implements Serializable {
+public class EspecialidadeService implements Serializable {
     private static final long serialVersionUID = 1L;
 
 

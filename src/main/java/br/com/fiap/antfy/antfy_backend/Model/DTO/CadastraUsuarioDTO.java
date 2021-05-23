@@ -10,11 +10,12 @@ import javax.persistence.Column;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CadastraMedicoDTO {
+public class CadastraUsuarioDTO {
 
     private String nome;
     private String email;
     private String senha;
+    private String cpf;
     private String crm;
     private Integer especialidade;
     private String lagradouro;
