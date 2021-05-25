@@ -26,8 +26,8 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<PacienteModel> cadastraMedico(@RequestBody CadastraUsuarioDTO obj) {
-        PacienteModel paciente = service.cadastrarMedico(obj);
+    public ResponseEntity<PacienteModel> cadastraPaciente(@RequestBody CadastraUsuarioDTO obj) {
+        PacienteModel paciente = service.cadastrarPaciente(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(paciente.getIdPaciente()).toUri();
         return ResponseEntity.created(uri).body(paciente);
     }

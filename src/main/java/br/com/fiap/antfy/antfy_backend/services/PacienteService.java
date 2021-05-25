@@ -28,7 +28,7 @@ public class PacienteService {
     }
 
 
-    public PacienteModel cadastrarMedico(CadastraUsuarioDTO obj) {
+    public PacienteModel cadastrarPaciente(CadastraUsuarioDTO obj) {
 
         PacienteModel paciente = new PacienteModel(obj.getNome(),
                 obj.getEmail(), obj.getSenha(), obj.getCpf(),
