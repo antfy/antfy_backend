@@ -3,11 +3,14 @@ package br.com.fiap.antfy.antfy_backend.security;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.Jwts;
 
 import java.util.Date;
 
+@Component
 public class JWTUtil {
 
     @Value("${jwt.secret}")

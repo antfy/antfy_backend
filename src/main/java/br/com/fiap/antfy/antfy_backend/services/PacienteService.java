@@ -1,15 +1,15 @@
 package br.com.fiap.antfy.antfy_backend.services;
 
-import br.com.fiap.antfy.antfy_backend.Model.DTO.CadastraUsuarioDTO;
-import br.com.fiap.antfy.antfy_backend.Model.EnderecoModel;
-import br.com.fiap.antfy.antfy_backend.Model.PacienteModel;
-import br.com.fiap.antfy.antfy_backend.Repository.PacienteRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import br.com.fiap.antfy.antfy_backend.Model.EnderecoModel;
+import br.com.fiap.antfy.antfy_backend.Model.PacienteModel;
+import br.com.fiap.antfy.antfy_backend.Model.DTO.CadastraUsuarioDTO;
+import br.com.fiap.antfy.antfy_backend.Repository.PacienteRepository;
 
 @Service
 public class PacienteService {
