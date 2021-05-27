@@ -5,6 +5,7 @@ import br.com.fiap.antfy.antfy_backend.Model.EnderecoModel;
 import br.com.fiap.antfy.antfy_backend.Model.PacienteModel;
 import br.com.fiap.antfy.antfy_backend.Repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class PacienteService {
     @Autowired
     PacienteRepository repository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     public List<PacienteModel> buscarTodos() {
         List<PacienteModel> paciente = repository.findAll();
@@ -31,7 +34,7 @@ public class PacienteService {
     public PacienteModel cadastrarPaciente(CadastraUsuarioDTO obj) {
 
         PacienteModel paciente = new PacienteModel(obj.getNome(),
-                obj.getEmail(), obj.getSenha(), obj.getCpf(),
+                obj.getEmail(), passwordEncoder.encode(obj.getSenha()), obj.getCpf(),
                 new EnderecoModel(obj.getLagradouro(), obj.getBairro(), obj.getCidade(), obj.getEstado(),
                 obj.getPais(), obj.getComplemento(), obj.getCep(), obj.getNumero()));
 
