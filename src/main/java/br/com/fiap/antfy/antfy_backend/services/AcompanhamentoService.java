@@ -21,24 +21,24 @@ public class AcompanhamentoService implements Serializable {
     PacienteService pacienteService;
 
 
-    public List<AcompanhamentoModel> buscarPorPaciente(Integer id){
+    public List<AcompanhamentoModel> buscarPorPaciente(Integer id) {
         List<AcompanhamentoModel> model = repository.findByPaciente(pacienteService.buscarUm(id));
-        return model ;
+        return model;
     }
 
-    public AcompanhamentoModel cadrastrarAcompanhamento(CadastraAcompanhamentoDTO acompanhamentoDTO){
+    public AcompanhamentoModel cadrastrarAcompanhamento(CadastraAcompanhamentoDTO acompanhamentoDTO) {
 
-        if (acompanhamentoDTO.getAltura() == null || acompanhamentoDTO.getPeso() ==null){
+        if (acompanhamentoDTO.getAltura() == null || acompanhamentoDTO.getPeso() == null) {
             var acompanhamentos = buscarPorPaciente(acompanhamentoDTO.getPaciente());
-
-            acompanhamentoDTO.setAltura(acompanhamentoDTO.getAltura() == null ? acompanhamentos.get(acompanhamentos.size() -1).getAltura() : acompanhamentoDTO.getAltura());
-            acompanhamentoDTO.setPeso
-                    (acompanhamentoDTO.getPeso() == null ? acompanhamentos.get(acompanhamentos.size() -1).getPeso() : acompanhamentoDTO.getPeso());
+            if (acompanhamentos.size() != 0) {
+                acompanhamentoDTO.setAltura(acompanhamentoDTO.getAltura() == null ? acompanhamentos.get(acompanhamentos.size() - 1).getAltura() : acompanhamentoDTO.getAltura());
+                acompanhamentoDTO.setPeso(acompanhamentoDTO.getPeso() == null ? acompanhamentos.get(acompanhamentos.size() - 1).getPeso() : acompanhamentoDTO.getPeso());
+            }
         }
-        var acompanhamento = new AcompanhamentoModel(null,acompanhamentoDTO.getPeso(),
+        var acompanhamento = new AcompanhamentoModel(null, acompanhamentoDTO.getPeso(),
                 acompanhamentoDTO.getAltura(), acompanhamentoDTO.getTemperatura(),
                 acompanhamentoDTO.getPrecao(), acompanhamentoDTO.getBatimento(),
-                new Date(),pacienteService.buscarUm(acompanhamentoDTO.getPaciente()));
+                new Date(), pacienteService.buscarUm(acompanhamentoDTO.getPaciente()));
 
         return repository.save(acompanhamento);
     }

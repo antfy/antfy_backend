@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "tb_08_especialidade")
+@Table(name = "tb_07_especialidade")
 public class EspecialidadeModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
