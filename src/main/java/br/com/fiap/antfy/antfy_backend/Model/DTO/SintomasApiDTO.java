@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SintomasDTO {
+public class SintomasApiDTO {
         private String sintomaId;
         private String sintoma;
         private String parteDoCorpo;

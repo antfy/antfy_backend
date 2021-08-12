@@ -53,6 +53,7 @@ public class PacienteModel implements Serializable {
     @OneToMany(mappedBy = "paciente")
     private List<AcompanhamentoModel> acompanhamento;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "paciente")
     private List<ConsultaModel> consutas;
 

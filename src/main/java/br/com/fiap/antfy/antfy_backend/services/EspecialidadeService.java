@@ -21,6 +21,11 @@ public class EspecialidadeService implements Serializable {
         return model ;
     }
 
+    public EspecialidadeModel buscarUmPorNome(String especialidade){
+        EspecialidadeModel model = repository.findByEspecialidade(especialidade);
+        return model ;
+    }
+
     public List<EspecialidadeModel> buscarTodos(){
         return repository.findAll();
     }

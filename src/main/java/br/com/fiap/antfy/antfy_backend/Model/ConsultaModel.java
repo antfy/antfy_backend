@@ -34,7 +34,7 @@ public class ConsultaModel implements Serializable {
     private Date dataFim;
 
     @Column(name = "status")
-    private StatusConsulta status;
+    private Integer status;
 
     @ManyToOne
     @JoinColumn(name = "paciente")
@@ -44,4 +44,9 @@ public class ConsultaModel implements Serializable {
     @JoinColumn(name = "medico")
     private MedicoModel medico;
 
+    public ConsultaModel(Date dataInicio, Integer status, PacienteModel paciente) {
+        this.dataInicio = dataInicio;
+        this.status = status;
+        this.paciente = paciente;
+    }
 }

@@ -1,6 +1,7 @@
 package br.com.fiap.antfy.antfy_backend.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,8 +27,8 @@ public class PacienteService {
     }
 
     public PacienteModel buscarUm(Integer id){
-        PacienteModel paciente = repository.getOne(id);
-        return paciente;
+        Optional<PacienteModel> paciente = repository.findById(id);
+        return paciente.get();
     }
 
 
