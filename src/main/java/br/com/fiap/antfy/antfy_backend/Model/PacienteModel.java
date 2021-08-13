@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ public class PacienteModel implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @JsonIgnore
     @Column(name = "senha")
     private String senha;
 
@@ -50,6 +52,10 @@ public class PacienteModel implements Serializable {
 
     @OneToMany(mappedBy = "paciente")
     private List<AcompanhamentoModel> acompanhamento;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "paciente")
+    private List<ConsultaModel> consutas;
 
     public PacienteModel(String nome, String email, String senha, String cpf, EnderecoModel endereco) {
         this.nome = nome;

@@ -1,25 +1,18 @@
 package br.com.fiap.antfy.antfy_backend.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "tb_07_medico")
+@Table(name = "tb_06_medico")
 public class MedicoModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -34,6 +27,7 @@ public class MedicoModel implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @JsonIgnore
     @Column(name = "senha")
     private String senha;
 
@@ -47,6 +41,10 @@ public class MedicoModel implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco")
     private EnderecoModel endereco;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "medico")
+    private List<ConsultaModel> consutas;
 
     public MedicoModel(String nome, String email, String senha, String crm, EspecialidadeModel especialidade, EnderecoModel endereco) {
         this.nome = nome;

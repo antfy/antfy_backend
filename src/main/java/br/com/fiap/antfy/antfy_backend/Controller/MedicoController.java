@@ -15,18 +15,18 @@ import java.util.List;
 @RequestMapping(value = "/medicos")
 public class MedicoController {
 
-        @Autowired
-        MedicoService medicoService;
+    @Autowired
+    MedicoService medicoService;
 
 
     @GetMapping
-    public ResponseEntity<List<MedicoModel>> buscarTodos(){
+    public ResponseEntity<List<MedicoModel>> buscarTodos() {
         List<MedicoModel> medico = medicoService.buscarTodos();
-        return  ResponseEntity.ok().body(medico);
+        return ResponseEntity.ok().body(medico);
     }
 
     @PostMapping
-    public ResponseEntity<MedicoModel> cadastraMedico(@RequestBody CadastraUsuarioDTO obj){
+    public ResponseEntity<MedicoModel> cadastraMedico(@RequestBody CadastraUsuarioDTO obj) {
         MedicoModel medico = medicoService.cadastrarMedico(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(medico.getIdMedico()).toUri();
         return ResponseEntity.created(uri).body(medico);
