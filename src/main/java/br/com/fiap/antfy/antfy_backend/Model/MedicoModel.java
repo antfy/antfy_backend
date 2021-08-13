@@ -42,6 +42,7 @@ public class MedicoModel implements Serializable {
     @JoinColumn(name = "endereco")
     private EnderecoModel endereco;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "medico")
     private List<ConsultaModel> consutas;
 

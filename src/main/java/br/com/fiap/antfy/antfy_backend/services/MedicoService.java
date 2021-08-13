@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MedicoService {
@@ -44,5 +45,14 @@ public class MedicoService {
                 obj.getPais(), obj.getComplemento(), obj.getCep(), obj.getNumero()));
 
         return repository.save(medico);
+    }
+
+    public MedicoModel buscarUm(Integer medicoID) {
+        Optional<MedicoModel> obj = repository.findById(medicoID);
+        return obj.get();
+    }
+
+    public MedicoModel findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 }

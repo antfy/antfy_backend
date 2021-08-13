@@ -41,4 +41,8 @@ public class PacienteService {
 
         return repository.save(paciente);
     }
+
+    public PacienteModel findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
 }
