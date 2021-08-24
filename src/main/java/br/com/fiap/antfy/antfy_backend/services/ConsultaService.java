@@ -1,13 +1,11 @@
 package br.com.fiap.antfy.antfy_backend.services;
 
-import br.com.fiap.antfy.antfy_backend.Enum.PerfilUser;
 import br.com.fiap.antfy.antfy_backend.Enum.StatusConsulta;
 import br.com.fiap.antfy.antfy_backend.Model.ConsultaModel;
 import br.com.fiap.antfy.antfy_backend.Model.DTO.*;
 import br.com.fiap.antfy.antfy_backend.Model.MedicoModel;
 import br.com.fiap.antfy.antfy_backend.Model.PacienteModel;
 import br.com.fiap.antfy.antfy_backend.Repository.ConsultaRepository;
-import br.com.fiap.antfy.antfy_backend.security.UserSS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

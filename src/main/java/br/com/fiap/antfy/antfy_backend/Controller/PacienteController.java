@@ -25,6 +25,12 @@ public class PacienteController {
         return ResponseEntity.ok().body(paciente);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<PacienteModel> buscarUm(@PathVariable Integer id) {
+        var paciente = service.buscarUm(id);
+        return ResponseEntity.ok().body(paciente);
+    }
+
     @PostMapping
     public ResponseEntity<PacienteModel> cadastraPaciente(@RequestBody CadastraUsuarioDTO obj) {
         PacienteModel paciente = service.cadastrarPaciente(obj);
