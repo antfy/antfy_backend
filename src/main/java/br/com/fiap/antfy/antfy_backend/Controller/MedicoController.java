@@ -2,6 +2,7 @@ package br.com.fiap.antfy.antfy_backend.Controller;
 
 import br.com.fiap.antfy.antfy_backend.Model.DTO.CadastraUsuarioDTO;
 import br.com.fiap.antfy.antfy_backend.Model.MedicoModel;
+import br.com.fiap.antfy.antfy_backend.Model.PacienteModel;
 import br.com.fiap.antfy.antfy_backend.services.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,12 @@ public class MedicoController {
     @GetMapping
     public ResponseEntity<List<MedicoModel>> buscarTodos() {
         List<MedicoModel> medico = medicoService.buscarTodos();
+        return ResponseEntity.ok().body(medico);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<MedicoModel> buscarUm(@PathVariable Integer id) {
+        var medico = medicoService.buscarUm(id);
         return ResponseEntity.ok().body(medico);
     }
 
