@@ -1,11 +1,11 @@
-FROM gradle:7.2.0-jdk11 AS build
-COPY --chown=gradle:gradle . /home/antfy
-WORKDIR /home/antfy
-RUN gradle build --no-daemon
+# Build stage
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY pom.xml /app/
+COPY src /app/src
+RUN mvn -f /app/pom.xml clean package
+RUN echo $(ls -1 /app/target/)
 
+# Run stage
 FROM openjdk:11-jre-slim
-EXPOSE 8080
-RUN mkdir /app
-COPY --from=build /home/antfy/build/libs/*.jar /app/antfy_app.jar
-
-ENTRYPOINT ["java","-jar", "/app/antfy_app.jar"]
+COPY --from=build /app/target/*.jar /app/app.jar
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

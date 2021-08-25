@@ -10,7 +10,7 @@ services:
     ports:
       - "3306:3306"
 
-  api-sintomas:
+  api-antfy:
     build: 
       dockerfile: ./Dockerfile
       context: .
